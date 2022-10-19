@@ -1,0 +1,35 @@
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+}
+div {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+img {
+    cursor: pointer;
+}
+</style>
+<body>     
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">Place Here</div>    
+    <img id="drag1" src="https://imageio.forbes.com/specials-images/imageserve/602c09c9135a060af5e1a8f4/Face-with-Spiral-Eyes---a-new-Apple-emoji-/960x0.png?height=711&width=711&fit=bounds" draggable="true" ondragstart="drag(event)" width="75" height="75"/>
+
+    <script>
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+        
+        function drag(e) {
+            e.dataTransfer.setData("text", e.target.id);
+        }
+        
+        function drop(e) {
+            e.preventDefault();
+            var data = e.dataTransfer.getData("text");
+            e.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
